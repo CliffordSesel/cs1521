@@ -1,0 +1,117 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>reveal.js - HTML5 Presentations</title>
+
+		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
+		<meta name="author" content="Andrei Oprea | @an_rei">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/night.css" id="theme">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		
+	</head>
+<div class="reveal"><div class="slides">
+        <section class="present" style="display: block;" contenteditable="false">
+          <div class="slide-edit-lock">Edit content</div>
+          <div class="kreator-slide-content"><div>Hi!</div><div>Welcome to 1521</div></div>
+        </section>
+      <section class="future" style="display: block;" hidden="" contenteditable="false">
+          <div class="slide-edit-lock">Edit content</div>
+          <div class="kreator-slide-content"><div>Im Cliff</div></div>
+        </section><section class="future" style="display: block;" hidden="" contenteditable="false">
+          <div class="slide-edit-lock">Edit content</div>
+          <div class="kreator-slide-content"><div>Hi!</div><div>Welcome to 1521</div></div>
+        </section><section class="stack future" style="display: block;" data-previous-indexv="0" hidden="" contenteditable="false"><section class="" style="display: block;" contenteditable="false">
+          <div class="slide-edit-lock">Edit content</div>
+          <div class="kreator-slide-content"></div>
+        </section><section class="future" style="display: block;" hidden="" contenteditable="false">
+          <div class="slide-edit-lock">Edit content</div>
+          <div class="kreator-slide-content"></div>
+        </section></section></div></div>			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+
+		</div>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		<script src="lib/js/head.min.js"></script>
+
+		<script>
+			// Load the main reveal.js script
+			head.js( 'js/reveal.js', function() {
+				// Parse the query string into a key/value object
+				var query = {};
+
+				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+				} );
+
+				// Fires when a slide with data-state=customevent is activated
+				Reveal.addEventListener( 'customevent', function() {
+					console.log( '"customevent" has fired' );
+				} );
+
+				// Fires each time a new slide is activated
+				Reveal.addEventListener( 'slidechanged', function( event ) {
+					// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				} );
+
+				Reveal.initialize({
+					// Display controls in the bottom right corner
+					controls: true,
+
+					// Display a presentation progress bar
+					progress: true,
+
+					// If true; each slide will be pushed to the browser history
+					history: true,
+
+					// Loops the presentation, defaults to false
+					loop: false,
+
+					// Flags if mouse wheel navigation should be enabled
+					mouseWheel: true,
+
+					// Apply a 3D roll to links on hover
+					rollingLinks: true,
+
+					// Transition style
+					transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+				});
+			} );
+
+			// Load third party scripts
+			head.js( 'lib/js/classList.js' );
+			head.js( 'lib/js/highlight.js', function() {
+				// Fire off syntax highlighting for potential code samples in the slides
+				hljs.initHighlightingOnLoad();
+			} );
+
+			// If we're runnning the notes server we need to include some additional JS
+			// TODO Is there a better way to determine if we're running the notes server?
+			if( window.location.host === 'localhost:1947' ) {
+				head.js( 'socket.io/socket.io.js', 'plugin/speakernotes/client.js' );
+			}
+		</script>
+
+	</body>
+</html>
